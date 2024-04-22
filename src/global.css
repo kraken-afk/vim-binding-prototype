@@ -27,15 +27,15 @@
   height: 99dvh;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
 
   padding: 2rem;
 }
 
 body {
   font-family: var(--monospace);
-  background-color: var(--primary-background);
+  background-color: var(--black);
 }
 
 code {
@@ -44,37 +44,58 @@ code {
 
 .container {
   width: 100%;
-  height: 100%;
+  height: 90%;
 
   position: relative;
 }
 
 .preview {
   color: var(--primary-foreground);
+  background-color: var(--primary-background);
 }
 
-
-.container > * {
+.container>* {
   position: absolute;
   top: 0;
   left: 0;
 
   padding: 1rem;
   tab-size: 2;
+  width: 100%;
+  height: 100%;
 }
 
 #buffer {
-  border: 1px solid;
-  border-color: var(--blue);
   background-color: transparent;
   color: transparent;
   caret-color: #fff;
 
-  width: 100%;
-  height: 100%;
   resize: none;
 }
 
-#buffer:focus {
+#buffer:focus-visible() {
   border-color: red;
+}
+
+
+.statusline {
+  font-family: 18px;
+  background-color: var(--primary-background);
+  color: var(--black);
+}
+
+.mode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 1rem;
+  width: max-content;
+}
+
+.mode[data-mode="Normal"] {
+  background-color: var(--green);
+}
+
+.mode[data-mode="Insert"] {
+  background-color: var(--magenta);
 }
